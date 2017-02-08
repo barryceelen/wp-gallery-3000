@@ -102,7 +102,6 @@ class Gallery_3000 {
 
 		$attachment_ids = get_post_meta( $post->ID, '_gallery_3000', true );
 		$items          = array();
-		$count          = 0;
 
 		if ( is_array( $attachment_ids ) ) {
 
