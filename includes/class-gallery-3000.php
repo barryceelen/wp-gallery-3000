@@ -100,7 +100,7 @@ class Gallery_3000 {
 			true
 		);
 
-		$attachment_ids = get_post_meta( $post->ID, '_gallery_3000_items', true );
+		$attachment_ids = get_post_meta( $post->ID, '_gallery_3000', true );
 		$items          = array();
 		$count          = 0;
 
@@ -225,10 +225,10 @@ class Gallery_3000 {
 		}
 
 		if ( empty( $_POST['gallery_3000_items'] ) ) { // Input var okay.
-			delete_post_meta( $post_id, '_gallery_3000_items' );
+			delete_post_meta( $post_id, '_gallery_3000' );
 		} else {
 			$items = array_map( 'intval', wp_unslash( (array) $_POST['gallery_3000_items'] ) ); // Input var okay.
-			update_post_meta( $post_id, '_gallery_3000_items', $items );
+			update_post_meta( $post_id, '_gallery_3000', $items );
 		}
 	}
 }
