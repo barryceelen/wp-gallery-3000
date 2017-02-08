@@ -166,7 +166,7 @@
 				delay: 150,
 				placeholder: 'sortable-placeholder',
 				forcePlaceholderSize: true,
-				start: function( e, ui ){
+				start: function( e, ui ) {
      				ui.placeholder.height( ui.helper.innerHeight() );
      				ui.placeholder.width( ui.helper.innerWidth() );
 				}
