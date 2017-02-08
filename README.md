@@ -1,6 +1,6 @@
 # WordPress image gallery meta box plugin
 
-Adds an image gallery meta box to the post and page editor.
+Adds an image gallery meta box to the post and page editor. 
 Filter the post types where the gallery meta box should be added:
 
 	add_filter( 'gallery_3000_post_types', 'myprefix_filter_options' );
