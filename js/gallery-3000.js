@@ -62,10 +62,13 @@
 			var count = items.length;
 
 			for ( var i = 0; i < count; i++ ) {
+
+				if ( i === 0 ) {
+					this.el.removeClass( this.options.classNameEmpty );
+				}
+				
 				this.renderItem( items[i] );
 			}
-
-			this.el.removeClass( this.options.classNameEmpty );
 		},
 
 		/**
