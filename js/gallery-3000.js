@@ -196,7 +196,6 @@
 				// return;
 
 				this.fileFrame.close();
-				this.fileFrame = null;
 			}
 
 			if ( _this.selectedItem > 0 ) {
