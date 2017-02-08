@@ -76,7 +76,7 @@
 		 *
 		 * @since 1.0.0
 		 * @param {object} item Item object.
-		 * @param {int}    id   (Optional) Private ID of element to replace.
+		 * @param {int}    id   (Optional) ID of element to replace.
 		 */
 		renderItem: function( item, id ) {
 
