@@ -30,6 +30,16 @@ class Gallery_3000 {
 	 */
 	private function __construct() {
 
+		/**
+		 * Filters The post types for which the gallery meta box is added.
+		 *
+		 * @since 3.9.0
+		 *
+		 * @param array $post_types The post types for which the gallery meta box is added to
+		 *                          the edit screen. Defaults are 'post' and 'page'.
+		 */
+		$this->post_types = apply_filters( 'gallery_3000_post_types', array( 'post', 'page' ) );
+
 		$this->add_actions_and_filters();
 	}
 
@@ -75,6 +85,10 @@ class Gallery_3000 {
 		}
 
 		global $post;
+
+		if ( ! in_array( $post->post_type, $this->post_types, true ) ) {
+			return;
+		}
 
 		wp_enqueue_media();
 
@@ -141,6 +155,12 @@ class Gallery_3000 {
 			return;
 		}
 
+		global $post;
+
+		if ( ! in_array( $post->post_type, $this->post_types, true ) ) {
+			return;
+		}
+
 		wp_enqueue_style(
 			'gallery-3000',
 			GALLERY_3000_PLUGIN_URL . 'css/gallery-3000.css'
@@ -154,21 +174,11 @@ class Gallery_3000 {
 	 */
 	public function add_meta_box() {
 
-		/**
-		 * Filters The post types for which the gallery meta box is added.
-		 *
-		 * @since 3.9.0
-		 *
-		 * @param array $post_types The post types for which the gallery meta box is added to
-		 *                          the edit screen. Defaults are 'post' and 'page'.
-		 */
-		$post_types = apply_filters( 'gallery_3000_post_types', array( 'post', 'page' ) );
-
 		add_meta_box(
 			'gallery-3000',
 			esc_html__( 'Gallery', 'gallery-3000' ),
 			array( $this, 'meta_box' ),
-			$post_types,
+			$this->post_types,
 			'normal',
 			'high'
 		);
