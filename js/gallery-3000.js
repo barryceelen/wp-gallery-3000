@@ -104,10 +104,12 @@
 			$template
 				.on( 'click', this.options.buttonDelete, function( e ) {
 					e.preventDefault();
+					$( this ).blur();
 					_this.deleteItem( item.id );
 				})
 				.on( 'click', this.options.buttonEdit, function( e ) {
 					e.preventDefault();
+					$( this ).blur();
 					_this.editItem( item.id );
 				});
 
