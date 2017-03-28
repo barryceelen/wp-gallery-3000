@@ -40,6 +40,10 @@ class Gallery_3000 {
 		 */
 		$this->post_types = apply_filters( 'gallery_3000_post_types', array( 'post', 'page' ) );
 
+		foreach ( $this->post_types as $post_type ) {
+			add_post_type_support( $post_type, 'gallery-3000' );
+		}
+
 		$this->add_actions_and_filters();
 	}
 
@@ -68,7 +72,7 @@ class Gallery_3000 {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
-		add_action( 'save_post', array( $this, 'save_post' ) );
+		add_action( 'save_post', array( $this, 'save_post' ), 10, 2 );
 	}
 
 	/**
@@ -86,7 +90,7 @@ class Gallery_3000 {
 
 		global $post;
 
-		if ( ! in_array( $post->post_type, $this->post_types, true ) ) {
+		if ( ! post_type_supports( $post->post_type, 'gallery-3000' ) ) {
 			return;
 		}
 
@@ -156,7 +160,7 @@ class Gallery_3000 {
 
 		global $post;
 
-		if ( ! in_array( $post->post_type, $this->post_types, true ) ) {
+		if ( ! post_type_supports( $post->post_type, 'gallery-3000' ) ) {
 			return;
 		}
 
@@ -177,7 +181,7 @@ class Gallery_3000 {
 			'gallery-3000',
 			esc_html__( 'Gallery', 'gallery-3000' ),
 			array( $this, 'meta_box' ),
-			$this->post_types,
+			get_post_types_by_support( 'gallery-3000' ),
 			'normal',
 			'high'
 		);
@@ -204,11 +208,16 @@ class Gallery_3000 {
 	 *       This would be beneficial for instance to be able to remove an image from the gallery when an attachment is deleted.
 	 *
 	 * @since 1.0.0
-	 * @param int $post_id ID of the post.
+	 * @param int     $post_id ID of the post.
+	 * @param WP_Post $post    WP_Post object of the post.
 	 */
-	public function save_post( $post_id ) {
+	public function save_post( $post_id, $post ) {
 
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return;
+		}
+
+		if ( ! post_type_supports( $post->post_type, 'gallery-3000' ) ) {
 			return;
 		}
 
