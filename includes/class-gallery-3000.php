@@ -111,7 +111,7 @@ class Gallery_3000 {
 
 			foreach ( $attachment_ids as $attachment_id ) {
 
-				$src = wp_get_attachment_image_src( absint( $attachment_id ), 'thumbnail' );
+				$src = wp_get_attachment_image_src( absint( $attachment_id ), array( 150, 150 ) );
 
 				if ( $src ) {
 					$items[] = array(
