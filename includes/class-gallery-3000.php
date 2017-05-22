@@ -72,6 +72,8 @@ class Gallery_3000 {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
+		add_action( 'admin_print_footer_scripts-post.php', array( $this, 'enqueue_media' ) );
+		add_action( 'admin_print_footer_scripts-post-new.php', array( $this, 'enqueue_media' ) );
 		add_action( 'save_post', array( $this, 'save_post' ), 10, 2 );
 	}
 
@@ -94,8 +96,6 @@ class Gallery_3000 {
 			return;
 		}
 
-		wp_enqueue_media();
-
 		wp_enqueue_script(
 			'gallery-3000',
 			GALLERY_3000_PLUGIN_URL . '/js/gallery-3000.js',
@@ -111,7 +111,7 @@ class Gallery_3000 {
 
 			foreach ( $attachment_ids as $attachment_id ) {
 
-				$src = wp_get_attachment_image_src( absint( $attachment_id ), 'thumbnail' );
+				$src = wp_get_attachment_image_src( absint( $attachment_id ), array( 150, 150 ) );
 
 				if ( $src ) {
 					$items[] = array(
@@ -129,7 +129,7 @@ class Gallery_3000 {
 			'gallery-3000',
 			'gallery3000Vars',
 			array(
-				'classNameEmpty'   => 'gallery-3000-empty',
+ 				'classNameEmpty'   => 'gallery-3000-empty',
 				'classNameLoading' => 'gallery-3000-loading',
 				'titleAdd'         => esc_html__( 'Add Images', 'gallery-3000' ),
 				'titleUpdate'      => esc_html__( 'Update Image', 'gallery-3000' ),
@@ -238,5 +238,24 @@ class Gallery_3000 {
 			$items = array_map( 'intval', wp_unslash( (array) $_POST['gallery_3000_items'] ) ); // Input var okay.
 			update_post_meta( $post_id, '_gallery_3000', $items );
 		}
+	}
+
+	/**
+	 * Enqueue media scripts.
+	 *
+	 * Enqueueing them in the meta box itself seems to muck with the default editor media view.
+	 * Let's just go ahead and enqueue them really super late.
+	 *
+	 * @since 1.0.0
+	 */
+	function enqueue_media() {
+
+		global $post;
+
+		if ( ! post_type_supports( $post->post_type, 'gallery-3000' ) ) {
+			return;
+		}
+
+		wp_enqueue_media();
 	}
 }
