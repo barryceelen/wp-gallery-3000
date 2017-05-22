@@ -66,7 +66,7 @@
 				if ( i === 0 ) {
 					this.el.removeClass( this.options.classNameEmpty );
 				}
-				
+
 				this.renderItem( items[i] );
 			}
 		},
@@ -100,6 +100,7 @@
 			if ( 'undefined' !== typeof id ) {
 				// Todo: No use having data attributes in options if we're hardcoding it here.
 				$( '[data-gallery-3000-item="' + id + '"]' ).replaceWith( $template );
+				this.deleteItem( id );
 			} else {
 				$template.appendTo( this.gallery );
 			}
