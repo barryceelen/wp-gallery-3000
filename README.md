@@ -13,7 +13,7 @@ Filter the post types where the gallery meta box should be added:
        		unset( $post_types['page'] );
     	}
 
-	    // Add meta box to the 'my_cool_post_type' custom post type edit screen.
+    	// Add meta box to the 'my_cool_post_type' custom post type edit screen.
     	if ( empty( $post_types['my_cool_post_type'] ) {
        		$post_types[] = 'my_cool_post_type';
     	}
