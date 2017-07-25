@@ -19,7 +19,7 @@
  */
 
 // Don't load directly.
-defined( 'ABSPATH' ) or die();
+defined( 'ABSPATH' ) || die();
 
 define( 'GALLERY_3000_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'GALLERY_3000_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
