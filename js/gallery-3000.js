@@ -233,6 +233,8 @@
 				}
 			});
 
+			this.fileFrame.states.get( 'library' ).get( 'library' ).observe( wp.Uploader.queue );
+
 			this.fileFrame.on( 'select', function() {
 
 				var attachments = _this.fileFrame.state().get( 'selection' ).toJSON();
