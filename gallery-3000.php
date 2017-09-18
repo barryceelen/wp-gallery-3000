@@ -12,7 +12,7 @@
  * Plugin URI: https://github.com/barryceelen/wp-gallery-3000
  * Description: Adds an image gallery meta box to the post and page edit screen.
  * Author: Barry Ceelen
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author URI: https://github.com/barryceelen
  * Text Domain: gallery-3000
  * Domain Path: /languages/
