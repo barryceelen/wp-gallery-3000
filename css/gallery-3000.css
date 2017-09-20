@@ -45,8 +45,8 @@
 }
 
 .gallery-3000-items .sortable-placeholder {
-    float: left;
-    margin: 0 8px 8px 0;
+	float: left;
+	margin: 0 8px 8px 0;
 }
 
 .gallery-3000-item {
@@ -75,9 +75,9 @@
 }
 
 .gallery-3000-item-thumbnail-wrap {
-    background: #eee;
-    -webkit-box-shadow: inset 0 0 15px rgba( 0, 0, 0, 0.1 ), inset 0 0 0 1px rgba( 0, 0, 0, 0.05 );
-    box-shadow: inset 0 0 15px rgba( 0, 0, 0, 0.1 ), inset 0 0 0 1px rgba( 0, 0, 0, 0.05 );
+	background: #eee;
+	-webkit-box-shadow: inset 0 0 15px rgba( 0, 0, 0, 0.1 ), inset 0 0 0 1px rgba( 0, 0, 0, 0.05 );
+	box-shadow: inset 0 0 15px rgba( 0, 0, 0, 0.1 ), inset 0 0 0 1px rgba( 0, 0, 0, 0.05 );
 	position: relative;
 	width: 100%;
 }
@@ -94,16 +94,16 @@
 .gallery-3000-item-delete {
 	color: #000;
 	cursor: pointer;
-    position: absolute;
-    top: 5px;
-    height: 18px;
-    width: 18px;
-    padding: 0;
-    background-color: #fff;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    -webkit-box-shadow: 0 0 0 1px rgba( 0, 0, 0, 0.3 );
-    box-shadow: 0 0 0 1px rgba( 0, 0, 0, 0.3 );
+	position: absolute;
+	top: 5px;
+	height: 18px;
+	width: 18px;
+	padding: 0;
+	background-color: #fff;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: 0 0 0 1px rgba( 0, 0, 0, 0.3 );
+	box-shadow: 0 0 0 1px rgba( 0, 0, 0, 0.3 );
 	border: 0;
 	outline: none;
 	-webkit-appearance: none;
@@ -112,11 +112,11 @@
 }
 
 .gallery-3000-item-edit {
-    left: 5px;
+	left: 5px;
 }
 
 .gallery-3000-item-delete {
-    right: 5px;
+	right: 5px;
 }
 
 .gallery-3000-item-edit-icon:before,

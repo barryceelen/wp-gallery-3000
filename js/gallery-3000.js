@@ -1,5 +1,14 @@
-/* global gallery3000Vars */
+/**
+ * Meta box and media frame
+ *
+ * @package   Gallery_3000
+ * @author    Barry Ceelen
+ * @license   GPL-3.0+
+ * @link      https://github.com/barryceelen/wp-gallery-3000
+ * @copyright Barry Ceelen
+ */
 
+/* global gallery3000Vars */
 ;(function ($) {
 	'use strict';
 
@@ -132,10 +141,10 @@
 			var index = this.items.indexOf( parseInt( id, 10 ) );
 
 			if ( index > -1 ) {
-			    this.items.splice( index, 1 );
+				this.items.splice( index, 1 );
 			}
 
-			this.gallery.find( '[data-gallery-3000-item="' + id + '"]').remove();
+			this.gallery.find( '[data-gallery-3000-item="' + id + '"]' ).remove();
 
 			if ( 0 === this.items.length ) {
 				this.el.addClass( this.options.classNameEmpty );
@@ -168,8 +177,8 @@
 				placeholder: 'sortable-placeholder',
 				forcePlaceholderSize: true,
 				start: function( e, ui ) {
-     				ui.placeholder.height( ui.helper.innerHeight() );
-     				ui.placeholder.width( ui.helper.innerWidth() );
+					ui.placeholder.height( ui.helper.innerHeight() );
+					ui.placeholder.width( ui.helper.innerWidth() );
 				}
 			});
 		},
@@ -184,17 +193,23 @@
 		openFileFrame: function() {
 
 			var _this = this,
-			    title,
-			    buttonText,
-			    multiple,
-			    exclude,
-			    itemId = this.selectedItem;
+				title,
+				buttonText,
+				multiple,
+				exclude,
+				itemId = this.selectedItem;
 
 			if ( this.fileFrame ) {
 
-				// Todo: Set options on the fly or create multiple views so we don't need to call this.fileFrame.close()?
-				// this.fileFrame.open();
-				// return;
+				/*
+				 * Todo: Set options on the fly or create multiple views so
+				 * we don't need to call this.fileFrame.close()?
+				 *
+				 * For future reference:
+				 *
+				 * this.fileFrame.open();
+				 * return;
+				 */
 
 				this.fileFrame.close();
 			}
@@ -211,7 +226,7 @@
 				var index = exclude.indexOf( parseInt( _this.selectedItem, 10 ) );
 
 				if ( index > -1 ) {
-				    exclude.splice( index, 1 );
+					exclude.splice( index, 1 );
 				}
 
 			} else {
@@ -260,11 +275,14 @@
 			this.fileFrame.on( 'open', function() {
 
 				if ( exclude.length ) {
-					// Hackety hack: http://wordpress.stackexchange.com/questions/78230/trigger-refresh-for-new-media-manager-in-3-5
+					/*
+					 * Hackety hack:
+					 * http://wordpress.stackexchange.com/questions/78230/trigger-refresh-for-new-media-manager-in-3-5
+					 */
 					if ( wp.media.frames.fileFrame.content.get() !== null ) {
-						_this.fileFrame.content.get().collection.props.set({ ignore: (+ new Date()) });
+						_this.fileFrame.content.get().collection.props.set( { ignore: ( + new Date() ) } );
 					} else {
-						_this.fileFrame.library.props.set({ ignore: (+ new Date()) });
+						_this.fileFrame.library.props.set( { ignore: ( + new Date() ) } );
 					}
 				}
 
