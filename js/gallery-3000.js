@@ -9,7 +9,7 @@
  */
 
 /* global gallery3000Vars */
-;(function ($) {
+(function ($) {
 	'use strict';
 
 	var gallery3000 = {

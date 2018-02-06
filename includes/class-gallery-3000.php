@@ -248,7 +248,7 @@ class Gallery_3000 {
 	 *
 	 * @since 1.0.0
 	 */
-	function enqueue_media() {
+	public function enqueue_media() {
 
 		global $post;
 
