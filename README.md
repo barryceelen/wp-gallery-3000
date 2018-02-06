@@ -4,14 +4,14 @@
 
 Adds an image gallery meta box to the post and page editor.
 
-The image IDs are stored in the `_gallery_3000` custom field. This plugin does not provide any template tags or gallery functions to show the images in your theme. A simple example:
+The image IDs are stored in the `_gallery_3000` custom field. This plugin does not provide any template tags or gallery functionality to show the images in your theme. A simple example:
 
 ```
 $ids  = get_post_meta( $post_id, '_gallery_3000', true );
 $html = array();
 
 foreach ( $ids as $id ) {
-	echo wp_get_attachment_image( $id, 'medium' };
+	echo wp_get_attachment_image( $id, 'medium' );
 }
 ```
 
