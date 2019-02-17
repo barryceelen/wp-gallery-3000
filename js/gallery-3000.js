@@ -214,7 +214,7 @@
 				this.fileFrame.close();
 			}
 
-			if ( _this.selectedItem > 0 ) {
+			if ( itemId > 0 ) {
 
 				title = _this.options.fileFrameTitleUpdate,
 				buttonText = _this.options.fileFrameButtonLabelUpdate;
@@ -223,7 +223,7 @@
 				// Exclude all items in the gallery except the one we're editing.
 				exclude = _this.items.slice();
 
-				var index = exclude.indexOf( parseInt( _this.selectedItem, 10 ) );
+				var index = exclude.indexOf( parseInt( itemId, 10 ) );
 
 				if ( index > -1 ) {
 					exclude.splice( index, 1 );
@@ -274,21 +274,9 @@
 
 			this.fileFrame.on( 'open', function() {
 
-				if ( exclude.length ) {
-					/*
-					 * Hackety hack:
-					 * http://wordpress.stackexchange.com/questions/78230/trigger-refresh-for-new-media-manager-in-3-5
-					 */
-					if ( wp.media.frames.fileFrame.content.get() !== null ) {
-						_this.fileFrame.content.get().collection.props.set( { ignore: ( + new Date() ) } );
-					} else {
-						_this.fileFrame.library.props.set( { ignore: ( + new Date() ) } );
-					}
-				}
-
-				if ( _this.selectedItem > 0 ) {
+				if ( itemId > 0 ) {
 					var selection = _this.fileFrame.state().get( 'selection' );
-					selection.add( wp.media.attachment( _this.selectedItem ) );
+					selection.add( wp.media.attachment( itemId ) );
 				}
 			});
 
