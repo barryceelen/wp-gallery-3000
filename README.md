@@ -2,21 +2,21 @@
 
 [![Build Status](https://travis-ci.org/barryceelen/wp-gallery-3000.svg?branch=master)](https://travis-ci.org/barryceelen/wp-gallery-3000)
 
-Adds an image gallery meta box to the post and page editor.
+Adds an image gallery meta box to the post and page editor. The gallery image IDs are stored in the `_gallery_3000` custom field.
 
-The image IDs are stored in the `_gallery_3000` custom field. This plugin does not provide any template tags or gallery functionality to show the images in your theme. A simple example:
+**Note:** This plugin does not provide any template tags or gallery functionality to show the images in your theme.
+
+A simplified example of how this plugin can be used in your theme:
 
 ```
 $ids  = get_post_meta( $post_id, '_gallery_3000', true );
-$html = array();
 
 foreach ( $ids as $id ) {
 	echo wp_get_attachment_image( $id, 'medium' );
 }
 ```
 
-
-Filter the post types where the gallery meta box should be added:
+By default, the plugin adds its meta box to the 'post' and 'page' post types. This can be changed by filtering the post types where the gallery meta box should be added:
 
 ```
 add_filter( 'gallery_3000_post_types', 'myprefix_filter_options' );
